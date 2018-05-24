@@ -14,7 +14,7 @@
 -   `自定义类型,自增长常量经常包含一个自定义枚举类型，允许你依靠编译器完成自增设置。`
 ```go
         type Stereotype int         
-          const ( 
+          const ( s
               TypicalNoob Stereotype = iota // 0 
               TypicalHipster                // 1 
               TypicalUnixWizard             // 2 
@@ -68,3 +68,7 @@ func main() {
 }
 按照上面的代码运行，最先写入的数据并不固定，但是数据存取顺序按照先入先出
 ```
+Ref:[http://blog.csdn.net/kjfcpua/article/details/18265441](http://blog.csdn.net/kjfcpua/article/details/18265441)
+
+
+##To Be Continue...
