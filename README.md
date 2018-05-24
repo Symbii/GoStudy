@@ -68,7 +68,9 @@ func main() {
 }
 按照上面的代码运行，最先写入的数据并不固定，但是数据存取顺序按照先入先出
 ```
-Ref:[http://blog.csdn.net/kjfcpua/article/details/18265441](http://blog.csdn.net/kjfcpua/article/details/18265441)
-
-
 ##To Be Continue...
+
+##Ref:
+1. [http://blog.csdn.net/kjfcpua/article/details/18265441](http://blog.csdn.net/kjfcpua/article/details/18265441)  
+2. [https://blog.csdn.net/u012291393/article/details/78378493](https://blog.csdn.net/u012291393/article/details/78378493)
+3. 学习go语言.pdf
