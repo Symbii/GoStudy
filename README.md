@@ -41,7 +41,7 @@ func main() {
     }()
 }
 ```
--`goroutine-channel 中，无缓冲channel数据流入流出顺序，是先入先出的`
+- `goroutine-channel 中，无缓冲channel数据流入流出顺序，是先入先出的`
 
 ```go
 package main
