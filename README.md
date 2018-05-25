@@ -76,9 +76,9 @@ defer fmt.Printf("%d ", i)
 延迟函数是按照后进先出的顺序执行，所以上面这段代码的执行结果是43210
 ```
 
-##To Be Continue...
+## To Be Continue...
 
-##Ref:
+## Ref:
 1. [http://blog.csdn.net/kjfcpua/article/details/18265441](http://blog.csdn.net/kjfcpua/article/details/18265441)  
 2. [https://blog.csdn.net/u012291393/article/details/78378493](https://blog.csdn.net/u012291393/article/details/78378493)
 3. 学习go语言.pdf
