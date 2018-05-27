@@ -93,6 +93,26 @@ func test1(arg ...int) (ret []int){
 变参传递可以原样传递 ，也可以切片传递部分, arg 是一个slice type.
 ```
 
+## 回调函数
+````go
+func callback(y int, f func(int)) {
+	f(y)  //调用回调函数 f 输入变量 y
+}
+````
+
+## Panic&Recover
+````go
+ func throwsPanic(f func()) (b bool) { 
+ 	defer func() { 
+        if x := recover(); x != nil { 
+ 	    b = true
+        } 
+    }()
+  f() 
+  return 
+}
+recover只在延迟函数中有效，检测f函数在运行中 是否产生panic
+````
 ## To Be Continue...
 
 ## Ref:
