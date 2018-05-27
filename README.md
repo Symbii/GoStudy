@@ -72,8 +72,25 @@ func main() {
 ```go
 for i:=0; i<5; i++ {
 defer fmt.Printf("%d ", i)
-}
 延迟函数是按照后进先出的顺序执行，所以上面这段代码的执行结果是43210
+func test()(ret int){
+	 defer func() {
+		ret++
+	}()
+	return 1
+}
+延迟函数是在函数结束前执行，所以上面test 返回值是2
+```
+
+```go
+func test1(arg ...int) (ret []int){
+	if 1 == len(arg){
+		return arg
+	}
+	test1(arg[:2]...)
+	return test1(arg...)
+}
+变参传递可以原样传递 ，也可以切片传递部分, arg 是一个slice type.
 ```
 
 ## To Be Continue...
