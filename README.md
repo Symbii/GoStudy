@@ -113,8 +113,19 @@ func callback(y int, f func(int)) {
 }
 recover只在延迟函数中有效，检测f函数在运行中 是否产生panic
 ````
-## To Be Continue...
 
+## Method
+```
+method 必须要有一个recieve
+func (s structname) funcname(...)(...){
+}
+这样子之后funcname这个函数就与s绑定,可以通过s.funcname直接访问，s就是funcname的接收者
+```
+## To Be Continue...
+```
+工作很忙，挤挤还是有的。
+人还是要有梦想，万一梦想没实现，发财了呢？
+```
 ## Ref:
 1. [http://blog.csdn.net/kjfcpua/article/details/18265441](http://blog.csdn.net/kjfcpua/article/details/18265441)  
 2. [https://blog.csdn.net/u012291393/article/details/78378493](https://blog.csdn.net/u012291393/article/details/78378493)
