@@ -121,6 +121,33 @@ func (s structname) funcname(...)(...){
 }
 这样子之后funcname这个函数就与s绑定,可以通过s.funcname直接访问，s就是funcname的接收者
 ```
+
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+    Lat, Long float64
+}
+
+var m map[string]Vertex
+
+func main() {
+    m = make(map[string]Vertex)
+    m["Bell Labs"] = Vertex{
+        40.68433, 74.39967,
+    }
+    m["test"] = Vertex{
+        12.0, 100,
+    }
+    fmt.Println(m["Bell Labs"])
+    fmt.Println(m)
+}
+打印的结果，map的顺序是随机的
+```
+[some question about map order](https://stackoverflow.com/questions/11853396/google-go-lang-assignment-order)
+
 ## To Be Continue...
 ```
 工作很忙，挤挤还是有的。
