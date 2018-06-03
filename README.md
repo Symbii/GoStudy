@@ -121,6 +121,7 @@ func (s structname) funcname(...)(...){
 }
 这样子之后funcname这个函数就与s绑定,可以通过s.funcname直接访问，s就是funcname的接收者
 ```
+##Map
 
 ```go
 package main
@@ -147,6 +148,37 @@ func main() {
 打印的结果，map的顺序是随机的
 ```
 [some question about map order](https://stackoverflow.com/questions/11853396/google-go-lang-assignment-order)
+
+##http.Get
+```
+package main
+
+import (
+	"os"
+	"net/http"
+	"fmt"
+	"io/ioutil"
+)
+
+func main(){
+	for _, url := range os.Args[1:] {
+		resp, err := http.Get(url)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
+			os.Exit(1)
+		}
+		b , err := ioutil.ReadAll(resp.Body)
+		resp.Body.Close()
+		if err != nil{
+			fmt.Fprintf(os.Stderr, "fetch:  reading %s: %v\n", url, err)
+			os.Exit(1)
+		}
+		fmt.Printf("%s", b)
+	}
+}
+http.Get(url) 遇到一个错误（etch: Get www.baidu.com: unsupported protocol scheme ""），因为必须url必须输入为https(http):\\....
+```
+
 
 ## To Be Continue...
 ```
