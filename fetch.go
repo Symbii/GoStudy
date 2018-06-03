@@ -6,10 +6,16 @@ import (
 	"fmt"
 //	"io/ioutil"
 	"io"
+	"strings"
 )
 
 func main(){
 	for _, url := range os.Args[1:] {
+		b := strings.HasPrefix(url, "https://")
+		if b != true{
+			url = "https://" + url
+		}
+
 		resp, err := http.Get(url)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
