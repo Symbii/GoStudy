@@ -176,7 +176,7 @@ func main(){
 		fmt.Printf("%s", b)
 	}
 }
-http.Get(url) 遇到一个错误（etch: Get www.baidu.com: unsupported protocol scheme ""），因为必须url必须输入为https(http):\\....
+http.Get(url) 遇到一个错误（fetch: Get www.baidu.com: unsupported protocol scheme ""），因为必须url必须输入为https(http):\\....
 ```
 
 
