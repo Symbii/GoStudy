@@ -150,7 +150,8 @@ func main() {
 [some question about map order](https://stackoverflow.com/questions/11853396/google-go-lang-assignment-order)
 
 ##http.Get
-```
+
+```go
 package main
 
 import (
@@ -179,6 +180,32 @@ func main(){
 http.Get(url) 遇到一个错误（fetch: Get www.baidu.com: unsupported protocol scheme ""），因为必须url必须输入为https(http):\\....
 ```
 
+##Something about Paxos
+###假设有多个proposer都想要向整个网络环境发送一条命令，让整个环境都执行，如何达到一致
+
+>初始化
+
+| Proposer    |      Acceptor      |
+|-------------|--------------------|
+| c:等待执行命令 <br> t=0 当前尝试的票号，票可以理解为为了区分时间前后|  T<sub>max</sub> = 0 当前已发布的最大票号，即时间最新<br>C = X  当前储存的命令<br>T<sub>store</sub>= 0 与当前存储的命令C对应的票号 | 
+
+>一阶段：
+ 
+| Proposer    |      Acceptor      |
+|-------------|--------------------|
+|1: t = t+1 <br> 2:向所有Acceptor发送消息，请求得到编号为目前t的票即t=t+1|  3：if t>T<sub>max</sub> 就说明这次请求是最新的，那么Acceptor 就使T<sub>max</sub>=t，并且回复给proposer 目前存储的命令和相对应的票号（T<sub>store</sub>， C）| 
+
+>二阶段
+
+| Proposer    |      Acceptor      |
+|-------------|--------------------|
+|4:如果过半数服务器回复ok：<br> 选择T<sub>store</sub>值最大的（T<sub>store</sub>，C）<br> 5:如果T<sub>store</sub>>0 then c=C <br> 6:向这些回复了ok的acceptor发送消息：propose(t,c) <br> Caution:5和6都是基于4的基础上进行，如果4不满足则从新开始1|  7：如果t=T<sub>max</sub>，那么C=c,T<sub>store</sub>=t，并且回复：Success <br> Caution:这里t=Tmax不是一定成立的，虽然在一阶段的时候已<br>经将T<sub>max</sub>更新为t，但是整个过程中还有其他Proposer会更新<br>Acceptor的T<sub>max</sub>，一旦别的proposer更新T<sub>max</sub>，将导致当前的<br>Proposer重新回到一阶段| 
+
+>三阶段
+
+| Proposer    |      Acceptor      |
+|-------------|--------------------|
+| 8：如果过半数服务器回复success then，向每个服务器发送execute(c)| |
 
 ## To Be Continue...
 ```
