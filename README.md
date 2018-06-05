@@ -121,7 +121,7 @@ func (s structname) funcname(...)(...){
 }
 这样子之后funcname这个函数就与s绑定,可以通过s.funcname直接访问，s就是funcname的接收者
 ```
-##Map
+## Map
 
 ```go
 package main
@@ -149,7 +149,7 @@ func main() {
 ```
 [some question about map order](https://stackoverflow.com/questions/11853396/google-go-lang-assignment-order)
 
-##http.Get
+## http.Get
 
 ```go
 package main
@@ -180,8 +180,8 @@ func main(){
 http.Get(url) 遇到一个错误（fetch: Get www.baidu.com: unsupported protocol scheme ""），因为必须url必须输入为https(http):\\....
 ```
 
-##Something about Paxos
-###假设有多个proposer都想要向整个网络环境发送一条命令，让整个环境都执行，如何达到一致
+## Something about Paxos
+### 假设有多个proposer都想要向整个网络环境发送一条命令，让整个环境都执行，如何达到一致
 
 >初始化
 
