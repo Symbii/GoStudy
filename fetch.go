@@ -2,12 +2,10 @@ package main
 
 import (
 	"os"
-	"strings"
 	"fmt"
 	"net/http"
 	"time"
 	"io"
-	"io/ioutil"
 )
 
 func main(){
@@ -15,10 +13,10 @@ func main(){
 
 
 	for _, url := range os.Args[1:] {
-		b := strings.HasPrefix(url, "https://")
-		if b != true{
-			url = "https://" + url
-		}
+		//b := strings.HasPrefix(url, "http://")
+		//if b != true{
+		//	url = "http://" + url
+		//}
 		go fetch(url, ch)
 	}
 
@@ -34,13 +32,13 @@ func fetch(url string, ch  chan<- string){
 		ch<- fmt.Sprintf("while getting %s, %v ", url , err)
 		return
 	}
-	nbytes, err:= io.Copy(ioutil.Discard, resp.Body)
+	nbytes, err:= io.Copy(os.Stdout, resp.Body)
 	resp.Body.Close()
 	if err != nil {
 		ch <- fmt.Sprintf("while reading %s,%v", url, err)
 		return
 	}
 	cost := time.Since(start).Seconds()
-	ch<- fmt.Sprintf("Time: %v,\t%v,\t%s",cost,nbytes,url)
+	ch<- fmt.Sprintf("Time: %v, \t%v, \t%s",cost,nbytes, url)
 	return
 }
