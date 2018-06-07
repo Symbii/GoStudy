@@ -207,6 +207,29 @@ http.Get(url) 遇到一个错误（fetch: Get www.baidu.com: unsupported protoco
 |-------------|--------------------|
 | 8：如果过半数服务器回复success then，向每个服务器发送execute(c)| |
 
+
+## Go语言局部变量内存分配
+> go语言会按照变量在函数结束的时候是否还有引用，自动选择这个这个局部变量是在堆还是栈上分配。var 或者 new 一个变量并不能决定
+```go
+var global *int
+
+func fool(){
+	var x int
+	global = &x
+	return
+}
+
+func  fool1(){
+	y:= new(int)
+	*y = 1
+	return
+}
+
+在fool中x变量会在堆上分配，在fool1中y会在栈上分配。
+局部变量的生命周期，只取决于是否地址还有引用或者说还可以被其他变量访问，包括在一个循环体中定义的变量，但是生命周期和局部作用域不是一个含义，局部变量的生命周期出现上面描述的情况会长于作用域
+
+```
+
 ## To Be Continue...
 ```
 工作很忙，挤挤还是有的。
