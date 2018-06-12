@@ -230,6 +230,14 @@ func  fool1(){
 
 ```
 
+## Slice
+```go
+var s []int
+s = nil
+s = []int(nil)
+s = []int{}---->len(s) == 0 & s != nil,个人理解是此时 s已经指向了底层生成的一个数组，只不过slice长度为0 
+```
+
 ## To Be Continue...
 ```
 工作很忙，挤挤还是有的。
