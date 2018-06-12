@@ -235,8 +235,15 @@ func  fool1(){
 var s []int
 s = nil
 s = []int(nil)
-s = []int{}---->len(s) == 0 & s != nil,个人理解是此时 s已经指向了底层生成的一个数组，只不过slice长度为0 
+s = []int{}---->len(s) == 0 & s != nil,个人理解是此时 s已经指向了底层生成的一个数组，只不过slice长度为0 ，所以判断一个slice是否时空，应该使用len(s)== 0 判断
+slice[m:n] n不能大于cap（slice），大于的话会触发一个panic，但是可以大于len（slice）这样子会使得slice增长
+
+slice 复制只是增加了一个别名，slice只能同 nil比较如上。
+
+内置的append函数有一套内存扩展策略，因此我们并不能确认新的slice和原始的slice是否引用的是相同的底层数组空间。同样，我们不能确认在原先的slice上的操作是否会影响到新的slice。所以将append返回值直接赋值给输入的dst是很有必要的。
+runes = append(runes, r)
 ```
+
 
 ## To Be Continue...
 ```
