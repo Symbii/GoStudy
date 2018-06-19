@@ -145,7 +145,9 @@ func main() {
     fmt.Println(m["Bell Labs"])
     fmt.Println(m)
 }
-打印的结果，map的顺序是随机的
+打印的结果，map的顺序是随机的,如果key在map中存在，则访问map会返回对应的值，如果不存在则会返回两个值第二个值为bool类型，第一个值为对应value类型的0值
+age, ok = map["haha"]
+if !ok--->if haha is not key ， age == 0
 ```
 [some question about map order](https://stackoverflow.com/questions/11853396/google-go-lang-assignment-order)
 
@@ -243,7 +245,6 @@ slice 复制只是增加了一个别名，slice只能同 nil比较如上。
 内置的append函数有一套内存扩展策略，因此我们并不能确认新的slice和原始的slice是否引用的是相同的底层数组空间。同样，我们不能确认在原先的slice上的操作是否会影响到新的slice。所以将append返回值直接赋值给输入的dst是很有必要的。
 runes = append(runes, r)
 ```
-
 
 ## To Be Continue...
 ```
