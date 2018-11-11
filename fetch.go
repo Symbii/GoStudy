@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"time"
 	"io"
+	"strings"
 )
 
 func main(){
@@ -13,10 +14,10 @@ func main(){
 
 
 	for _, url := range os.Args[1:] {
-		//b := strings.HasPrefix(url, "http://")
-		//if b != true{
-		//	url = "http://" + url
-		//}
+		b := strings.HasPrefix(url, "http://")
+		if b != true{
+			url = "http://" + url
+		}
 		go fetch(url, ch)
 	}
 
