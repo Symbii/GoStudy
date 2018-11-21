@@ -1,7 +1,7 @@
 # GoStudy
 - `package name,name一般是目录名字,一个工程一定会有一个package main,
   import "name" name 同样指的是目录名字,代码中才是包的名字`
-- `GOROOT 指的是go目录, GOPATH指的是src的目录`
+- `GOROOT 指的是go目录, GOPATH指的是src的目录, go run 会产生临时文件，临时文件可以通过go run -work查看`
 - `任何赋给_的值都将被丢弃`
 - `安装好Go语言之后，其文档可以通过go doc命令查看，例如查看fmt，在命令行输入go doc fmt即可。如果要查看某个包中的子目录的文档，使用go doc parent_package/son_directory,例如go doc hash/fnv`
 - `iota 只能在const类型中使用，每当const关键字出现的时候就会被重置`
